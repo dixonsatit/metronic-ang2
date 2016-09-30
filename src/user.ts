@@ -16,3 +16,8 @@ export interface ResultSet {
   offset: number,
   rows: Array<UserDocument>
 }
+
+export interface BarData {
+  label: string,
+  data: number[]
+}

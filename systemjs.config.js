@@ -26,7 +26,8 @@
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
       'pouchdb': 'npm:pouchdb/dist/pouchdb.js',
       'moment': 'npm:moment/min/moment-with-locales.min.js',
-      'pouchdb-find': 'npm:pouchdb-find/dist/pouchdb.find.min.js'
+      'pouchdb-find': 'npm:pouchdb-find/dist/pouchdb.find.min.js',
+      'ng2-charts': 'npm:ng2-charts',
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -39,6 +40,10 @@
       },
       'angular-in-memory-web-api': {
         main: './index.js',
+        defaultExtension: 'js'
+      },
+      'ng2-charts': {
+        main: './ng2-charts.js',
         defaultExtension: 'js'
       }
     }
