@@ -29,6 +29,7 @@ var EditComponent = (function () {
             .then(function (doc) {
             _this.username = doc.username;
             _this.fullname = doc.fullname;
+            _this.salary = doc.salary;
         });
     };
     EditComponent.prototype.save = function () {
@@ -39,7 +40,8 @@ var EditComponent = (function () {
                 _id: _this.id,
                 _rev: doc._rev,
                 fullname: _this.fullname,
-                username: _this.username
+                username: _this.username,
+                salary: _this.salary
             });
         })
             .then(function (res) {

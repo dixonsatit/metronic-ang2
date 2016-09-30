@@ -9,6 +9,11 @@
         <label for="form_control_1">Fullname</label>
         <!--<span class="help-block">Some help goes here...</span>-->
     </div>
+     <div class="form-group form-md-line-input">
+        <input type="text" class="form-control" [(ngModel)]="salary">
+        <label for="form_control_1">Salary</label>
+        <!--<span class="help-block">Some help goes here...</span>-->
+    </div>
 
   <div class="form-actions noborder">
       <button type="button" class="btn blue" (click)="save()" [disabled]="!username || !fullname">Save</button>
