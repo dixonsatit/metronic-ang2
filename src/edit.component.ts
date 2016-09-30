@@ -12,6 +12,7 @@ let moment = require('moment')
 export class EditComponent implements OnInit {
   username: string
   fullname: string
+  salary: number
   db: any
   id: any
   constructor(private connection: Connection, private router: Router, private activatedRoute: ActivatedRoute) {
@@ -26,6 +27,7 @@ export class EditComponent implements OnInit {
       .then(doc => {
         this.username = doc.username;
         this.fullname = doc.fullname;
+        this.salary   = doc.salary; 
       });
   }
 
@@ -36,7 +38,8 @@ export class EditComponent implements OnInit {
           _id: this.id,
           _rev: doc._rev,
           fullname: this.fullname,
-          username: this.username
+          username: this.username,
+          salary: this.salary
         })
       })
       .then(res => {
