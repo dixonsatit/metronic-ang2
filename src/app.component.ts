@@ -12,11 +12,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.db.put({
-    //   _id: 'admin',
-    //   username: 'admin',
-    //   fullname: 'Satit Rianpit'
-    // });
+
   }  
 
  }
