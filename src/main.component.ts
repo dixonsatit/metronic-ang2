@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { Connection } from './connection'
-import { UserData, UserDocument, ResultSet } from './user'
+import { 
+  UserData, 
+  UserDocument, 
+  ResultSet, 
+  RoleData 
+} from './user'
 
 let PouchDB = require('pouchdb')
 PouchDB.plugin(require('pouchdb-find'));
@@ -14,6 +19,7 @@ export class MainComponent implements OnInit {
   db: any
   userDocument: Array<UserDocument>
   users: Array<UserData>
+  roleData: Array<RoleData>
   resultSet: ResultSet
   query: string
 
@@ -23,6 +29,11 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.getList()
+    this.roleData = [
+     {'code': 1, 'label': 'User'},
+     {'code': 2, 'label': 'Admin'},
+     {'code': 3, 'label': 'Super Admin'},
+    ]
   }
   
   getList() {
