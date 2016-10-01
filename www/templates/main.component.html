@@ -1,0 +1,66 @@
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a routerLink="/main">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span class="active">Employee</span>
+    </li>
+</ul>
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption font-dark" style="cursor:pointer" routerLink="/main">
+            <i class="icon-layers font-dark"></i>
+            <span class="caption-subject bold uppercase"> Employee List</span>
+        </div>
+        <div class="actions">
+            <div class="btn-group btn-group-devided" data-toggle="buttons">
+                <button routerLink="/new" class="btn btn-transparent dark btn-outline btn-circle btn-sm "> Create</button>
+            </div>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="form-group form-md-line-input has-info">
+            <div class="input-group input-group-sm">
+                <div class="input-group-control">
+                    <input type="text" class="form-control input-sm" placeholder="Search..." [(ngModel)]="query">
+                    <label for="form_control_1">Search</label>
+                </div>
+                <span class="input-group-btn btn-right">
+            <button class="btn green-haze" type="button" (click)="search()">Search!</button>
+        </span>
+            </div>
+        </div>
+        <table class="table  table-striped">
+            <thead>
+                <tr>
+                    <th> ID </th>
+                    <th> Username </th>
+                    <th> Fullname </th>
+                    <th> Salary </th>
+                    <th> Role </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{ user._id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.fullname }}</td>
+                    <td>{{ user.salary }}</td>
+                    <td><span class="label label-sm label-info">{{ user.role | roleName }}</span></td>
+                    <td>
+                        <div class="actions">
+                            <a class="btn btn-circle btn-icon-only red" (click)="remove(user._id)">
+                                <i class="icon-trash"></i>
+                            </a>
+                            <a class="btn btn-circle btn-icon-only green" (click)="edit(user._id)">
+                                <i class="icon-pencil"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
