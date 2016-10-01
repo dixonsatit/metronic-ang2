@@ -1,8 +1,12 @@
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    else
+        for (var i = decorators.length - 1; i >= 0; i--)
+            if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var __metadata = (this && this.__metadata) || function (k, v) {
@@ -37,35 +41,37 @@ var MainComponent = (function () {
         var _this = this;
         this.users = [];
         this.db.allDocs({
-            include_docs: true
-        })
+                include_docs: true
+            })
             .then(function (doc) {
-            var _doc = doc;
-            var total = _doc.total_rows;
-            var documents = _doc.rows;
-            // let userDocument = _do
-            console.log(documents);
-            _this.users = [];
-            documents.forEach(function (v) {
-                _this.users.push(v.doc);
-            });
-        })
+                var _doc = doc;
+                var total = _doc.total_rows;
+                var documents = _doc.rows;
+                // let userDocument = _do
+                console.log(documents);
+                _this.users = [];
+                documents.forEach(function (v) {
+                    _this.users.push(v.doc);
+                });
+            })
             .catch(function (err) {
-            console.log(err);
-        });
+                console.log(err);
+            });
     };
     MainComponent.prototype.doSearch = function (username) {
         var _this = this;
         this.users = [];
         this.db.find({
-            selector: { username: username }
-        })
+                selector: {
+                    username: username
+                }
+            })
             .then(function (result) {
-            _this.users = result.docs;
-        })
+                _this.users = result.docs;
+            })
             .catch(function (err) {
-            console.log(err);
-        });
+                console.log(err);
+            });
     };
     MainComponent.prototype.edit = function (id) {
         this.router.navigate(['/edit', id]);
@@ -76,24 +82,23 @@ var MainComponent = (function () {
         if (confirm('Are you sure?')) {
             this.db.get(id)
                 .then(function (doc) {
-                _this.db.remove(doc);
-                _this.getList();
-            });
+                    _this.db.remove(doc);
+                    _this.getList();
+                });
         }
     };
     MainComponent.prototype.search = function () {
         if (this.query) {
             this.doSearch(this.query);
-        }
-        else {
+        } else {
             this.getList();
         }
     };
     MainComponent = __decorate([
         core_1.Component({
             selector: 'main-page',
-            templateUrl: '../templates/main.component.html'
-        }), 
+            templateUrl: 'metronic-ang2/www/templates/main.component.html'
+        }),
         __metadata('design:paramtypes', [connection_1.Connection, role_service_1.RoleService, router_1.Router])
     ], MainComponent);
     return MainComponent;
