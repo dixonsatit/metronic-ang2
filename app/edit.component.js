@@ -30,6 +30,7 @@ var EditComponent = (function () {
             _this.username = doc.username;
             _this.fullname = doc.fullname;
             _this.salary = doc.salary;
+            _this.role = doc.role;
         });
     };
     EditComponent.prototype.save = function () {
@@ -41,7 +42,8 @@ var EditComponent = (function () {
                 _rev: doc._rev,
                 fullname: _this.fullname,
                 username: _this.username,
-                salary: _this.salary
+                salary: _this.salary,
+                role: _this.role
             });
         })
             .then(function (res) {
@@ -54,7 +56,7 @@ var EditComponent = (function () {
     EditComponent = __decorate([
         core_1.Component({
             selector: 'new-page',
-            templateUrl: '../templates/edit.component.html'
+            templateUrl: '../templates/form.component.html'
         }), 
         __metadata('design:paramtypes', [connection_1.Connection, router_1.Router, router_1.ActivatedRoute])
     ], EditComponent);

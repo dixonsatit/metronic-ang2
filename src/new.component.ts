@@ -7,12 +7,13 @@ let moment = require('moment')
 
 @Component({
   selector: 'new-page',
-  templateUrl: '../templates/new.component.html'
+  templateUrl: '../templates/form.component.html'
 })
 export class NewComponent implements OnInit {
   username: string
   fullname: string
   salary: number
+  role: number
   db: any
 
   constructor(private connection: Connection, private router: Router) {
@@ -26,7 +27,8 @@ export class NewComponent implements OnInit {
       _id: moment().format('x'),
       username: this.username,
       fullname: this.fullname,
-      salary: this.salary
+      salary: this.salary,
+      role: this.role
     }
 
     this.db.put(user);

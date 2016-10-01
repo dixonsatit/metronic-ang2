@@ -24,7 +24,8 @@ var NewComponent = (function () {
             _id: moment().format('x'),
             username: this.username,
             fullname: this.fullname,
-            salary: this.salary
+            salary: this.salary,
+            role: this.role
         };
         this.db.put(user);
         this.router.navigateByUrl('/main');
@@ -32,7 +33,7 @@ var NewComponent = (function () {
     NewComponent = __decorate([
         core_1.Component({
             selector: 'new-page',
-            templateUrl: '../templates/new.component.html'
+            templateUrl: '../templates/form.component.html'
         }), 
         __metadata('design:paramtypes', [connection_1.Connection, router_1.Router])
     ], NewComponent);

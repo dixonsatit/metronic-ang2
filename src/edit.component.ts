@@ -7,12 +7,13 @@ let moment = require('moment')
 
 @Component({
   selector: 'new-page',
-  templateUrl: '../templates/edit.component.html'
+  templateUrl: '../templates/form.component.html'
 })
 export class EditComponent implements OnInit {
   username: string
   fullname: string
   salary: number
+  role: number
   db: any
   id: any
   constructor(private connection: Connection, private router: Router, private activatedRoute: ActivatedRoute) {
@@ -28,6 +29,7 @@ export class EditComponent implements OnInit {
         this.username = doc.username;
         this.fullname = doc.fullname;
         this.salary   = doc.salary; 
+        this.role     = doc.role;
       });
   }
 
@@ -39,7 +41,8 @@ export class EditComponent implements OnInit {
           _rev: doc._rev,
           fullname: this.fullname,
           username: this.username,
-          salary: this.salary
+          salary: this.salary,
+          role: this.role
         })
       })
       .then(res => {

@@ -3,7 +3,8 @@ export interface UserData {
   _id: number,
   username: string,
   fullname: string,
-  salary: number
+  salary: number,
+  role: number
 }
 
 export interface UserDocument {
