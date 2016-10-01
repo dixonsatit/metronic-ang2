@@ -20,4 +20,3 @@ import { routing } from './app.routing';
   providers: [Connection, RoleService]
 })
 export class AppModule { }
-
