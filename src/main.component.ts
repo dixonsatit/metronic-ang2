@@ -8,6 +8,8 @@ import {
   RoleData 
 } from './user'
 
+import { RoleService } from './role.service'
+
 let PouchDB = require('pouchdb')
 PouchDB.plugin(require('pouchdb-find'));
 
@@ -23,17 +25,22 @@ export class MainComponent implements OnInit {
   resultSet: ResultSet
   query: string
 
-  constructor(private connection: Connection, private router: Router) {
+  constructor(private connection: Connection, private router: Router, private roleService: RoleService) {
     this.db = this.connection.getConnection()
    }
 
   ngOnInit() {
     this.getList()
-    this.roleData = [
-     {'code': 1, 'label': 'User'},
-     {'code': 2, 'label': 'Admin'},
-     {'code': 3, 'label': 'Super Admin'},
-    ]
+    this.roleData = this.roleService.getRole()
+  }
+
+  getRoleName(roleCode) {
+    this.roleData.forEach(v => {
+      if (v.code == +roleCode) {
+        console.log(v)
+        return v.label
+      }
+    })
   }
   
   getList() {

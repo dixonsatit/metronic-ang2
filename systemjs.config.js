@@ -28,6 +28,7 @@
       'moment': 'npm:moment/min/moment-with-locales.min.js',
       'pouchdb-find': 'npm:pouchdb-find/dist/pouchdb.find.min.js',
       'ng2-charts': 'npm:ng2-charts',
+      'lodash': 'npm:lodash',
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -44,6 +45,10 @@
       },
       'ng2-charts': {
         main: './ng2-charts.js',
+        defaultExtension: 'js'
+      },
+      'lodash': {
+        main: './index.js',
         defaultExtension: 'js'
       }
     }
