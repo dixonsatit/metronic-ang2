@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { Connection } from './connection'
+import { RoleService } from './role.service'
 import { 
   UserData, 
   UserDocument, 
   ResultSet, 
   RoleData 
 } from './user'
-
-import { RoleService } from './role.service'
 
 let PouchDB = require('pouchdb')
 PouchDB.plugin(require('pouchdb-find'));
@@ -25,7 +24,7 @@ export class MainComponent implements OnInit {
   resultSet: ResultSet
   query: string
 
-  constructor(private connection: Connection, private router: Router, private roleService: RoleService) {
+  constructor(private connection: Connection,  private roleService: RoleService, private router: Router) {
     this.db = this.connection.getConnection()
    }
 
@@ -67,13 +66,6 @@ export class MainComponent implements OnInit {
   }
 
   doSearch(username) {
-    // this.db.get(username)
-    //   .then(doc => {
-    //     this.users = doc
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   });
 
     this.users = []
 

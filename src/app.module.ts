@@ -22,4 +22,3 @@ import { RoleNamePipe } from './role.pipe'
   providers: [Connection, RoleService]
 })
 export class AppModule { }
-
