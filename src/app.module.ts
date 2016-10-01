@@ -13,9 +13,11 @@ import { RoleService } from './role.service';
 import { Connection } from './connection';
 import { routing } from './app.routing';
 
+import { RoleNamePipe } from './role.pipe'
+
 @NgModule({
   imports:      [ BrowserModule, routing, FormsModule, ChartsModule ],
-  declarations: [ AppComponent, MainComponent, NewComponent, EditComponent, ChartComponent ],
+  declarations: [ AppComponent, MainComponent, NewComponent, EditComponent, ChartComponent, RoleNamePipe ],
   bootstrap: [AppComponent],
   providers: [Connection, RoleService]
 })

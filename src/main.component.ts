@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
   db: any
   userDocument: Array<UserDocument>
   users: Array<UserData>
-  roleItems: Array<RoleData>
+  roleData: Array<RoleData>
   resultSet: ResultSet
   query: string
 
@@ -30,7 +30,16 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.getList()
-    this.roleItems = this.roleService.getRole();
+    this.roleData = this.roleService.getRole()
+  }
+
+  getRoleName(roleCode) {
+    this.roleData.forEach(v => {
+      if (v.code == +roleCode) {
+        console.log(v)
+        return v.label
+      }
+    })
   }
   
   getList() {
@@ -92,13 +101,5 @@ export class MainComponent implements OnInit {
     } else {
       this.getList()
     }
-  }
-
-  getRoleName(code: any):string {
-    let items = []
-     this.roleItems.forEach( role => {
-       items[role.code]=role.label
-    })
-    return code in items ? items[code] : '';
   }
 }
