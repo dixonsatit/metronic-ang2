@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { Connection } from './connection'
+import { RoleService } from './role.service'
 import { 
   UserData, 
   UserDocument, 
@@ -19,21 +20,17 @@ export class MainComponent implements OnInit {
   db: any
   userDocument: Array<UserDocument>
   users: Array<UserData>
-  roleData: Array<RoleData>
+  roleItems: Array<RoleData>
   resultSet: ResultSet
   query: string
 
-  constructor(private connection: Connection, private router: Router) {
+  constructor(private connection: Connection,  private roleService: RoleService, private router: Router) {
     this.db = this.connection.getConnection()
    }
 
   ngOnInit() {
     this.getList()
-    this.roleData = [
-     {'code': 1, 'label': 'User'},
-     {'code': 2, 'label': 'Admin'},
-     {'code': 3, 'label': 'Super Admin'},
-    ]
+    this.roleItems = this.roleService.getRole();
   }
   
   getList() {
@@ -60,13 +57,6 @@ export class MainComponent implements OnInit {
   }
 
   doSearch(username) {
-    // this.db.get(username)
-    //   .then(doc => {
-    //     this.users = doc
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   });
 
     this.users = []
 
@@ -102,5 +92,13 @@ export class MainComponent implements OnInit {
     } else {
       this.getList()
     }
+  }
+
+  getRoleName(code: any):string {
+    let items = []
+     this.roleItems.forEach( role => {
+       items[role.code]=role.label
+    })
+    return code in items ? items[code] : '';
   }
 }
