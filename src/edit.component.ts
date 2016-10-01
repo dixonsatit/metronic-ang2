@@ -1,22 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Connection } from './connection'
-
+import { RoleService } from './role.service'
+import { RoleData } from './user'
 import { Router, ActivatedRoute, Params } from '@angular/router'
 
 let moment = require('moment')
 
 @Component({
   selector: 'new-page',
-  templateUrl: '../templates/form.component.html'
+  templateUrl: '../templates/edit.component.html'
 })
 export class EditComponent implements OnInit {
   username: string
   fullname: string
   salary: number
   role: number
+  roleItems: Array<RoleData>
   db: any
   id: any
-  constructor(private connection: Connection, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private connection: Connection,  private roleService: RoleService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.db = this.connection.getConnection()
     this.activatedRoute.params.forEach((param: Params) => {
       this.id = param['id']
@@ -31,6 +33,9 @@ export class EditComponent implements OnInit {
         this.salary   = doc.salary; 
         this.role     = doc.role;
       });
+      
+    this.roleItems = this.roleService.getRole();
+    console.log(this.roleItems[0].label);
   }
 
   save() {

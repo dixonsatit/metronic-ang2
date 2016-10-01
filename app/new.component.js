@@ -10,15 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var connection_1 = require('./connection');
+var role_service_1 = require('./role.service');
 var router_1 = require('@angular/router');
 var moment = require('moment');
 var NewComponent = (function () {
-    function NewComponent(connection, router) {
+    function NewComponent(connection, roleService, router) {
         this.connection = connection;
+        this.roleService = roleService;
         this.router = router;
         this.db = this.connection.getConnection();
     }
-    NewComponent.prototype.ngOnInit = function () { };
+    NewComponent.prototype.ngOnInit = function () {
+        this.roleItems = this.roleService.getRole();
+        console.log(this.roleItems[0].label);
+    };
     NewComponent.prototype.save = function () {
         var user = {
             _id: moment().format('x'),
@@ -33,12 +38,11 @@ var NewComponent = (function () {
     NewComponent = __decorate([
         core_1.Component({
             selector: 'new-page',
-            templateUrl: '../templates/form.component.html'
+            templateUrl: '../templates/new.component.html'
         }), 
-        __metadata('design:paramtypes', [connection_1.Connection, (typeof (_a = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [connection_1.Connection, role_service_1.RoleService, router_1.Router])
     ], NewComponent);
     return NewComponent;
-    var _a;
 }());
 exports.NewComponent = NewComponent;
 //# sourceMappingURL=new.component.js.map

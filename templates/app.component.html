@@ -26,19 +26,30 @@
   </div>
 </div>-->
 
-<div class="portlet light bordered">
-    <div class="portlet-title">
-        <div class="caption font-dark" style="cursor:pointer" routerLink="/main">
-            <i class="icon-layers font-dark"></i>
-            <span class="caption-subject bold uppercase"> Employee List</span>
-        </div>
-        <div class="actions">
-            <div class="btn-group btn-group-devided" data-toggle="buttons">
-                <button class="btn btn-transparent dark btn-outline btn-circle btn-sm" routerLink="/new"> <i class="glyphicon glyphicon-plus"></i> Create</button>
-            </div>
+<div class="page-container">
+    <div class="page-sidebar-wrapper">
+        <div class="page-sidebar navbar-collapse collapse">
+            <ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                <li>
+                    <a class="nav-link " routerLink="/main">
+                        <i class="icon-graph"></i>
+                        <span class="title">Employee</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link " routerLink="/charts">
+                        <i class="icon-graph"></i>
+                        <span class="title">Chart</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
-    <div class="portlet-body">
-        <router-outlet></router-outlet>
+    <div class="page-content-wrapper">
+        <div class="page-content">
+
+            <router-outlet></router-outlet>
+
+        </div>
     </div>
 </div>

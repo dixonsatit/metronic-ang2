@@ -22,3 +22,8 @@ export interface BarData {
   label: string,
   data: number[]
 }
+
+export interface RoleData {
+  code: number,
+  label: string
+}

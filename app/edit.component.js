@@ -10,12 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var connection_1 = require('./connection');
+var role_service_1 = require('./role.service');
 var router_1 = require('@angular/router');
 var moment = require('moment');
 var EditComponent = (function () {
-    function EditComponent(connection, router, activatedRoute) {
+    function EditComponent(connection, roleService, router, activatedRoute) {
         var _this = this;
         this.connection = connection;
+        this.roleService = roleService;
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.db = this.connection.getConnection();
@@ -32,6 +34,8 @@ var EditComponent = (function () {
             _this.salary = doc.salary;
             _this.role = doc.role;
         });
+        this.roleItems = this.roleService.getRole();
+        console.log(this.roleItems[0].label);
     };
     EditComponent.prototype.save = function () {
         var _this = this;
@@ -56,12 +60,11 @@ var EditComponent = (function () {
     EditComponent = __decorate([
         core_1.Component({
             selector: 'new-page',
-            templateUrl: '../templates/form.component.html'
+            templateUrl: '../templates/edit.component.html'
         }), 
-        __metadata('design:paramtypes', [connection_1.Connection, (typeof (_a = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _a) || Object, (typeof (_b = typeof router_1.ActivatedRoute !== 'undefined' && router_1.ActivatedRoute) === 'function' && _b) || Object])
+        __metadata('design:paramtypes', [connection_1.Connection, role_service_1.RoleService, router_1.Router, router_1.ActivatedRoute])
     ], EditComponent);
     return EditComponent;
-    var _a, _b;
 }());
 exports.EditComponent = EditComponent;
 //# sourceMappingURL=edit.component.js.map

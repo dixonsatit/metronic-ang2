@@ -9,14 +9,15 @@ import { NewComponent }   from './new.component';
 import { EditComponent }   from './edit.component';
 import { ChartComponent }   from './chart.component';
 
-import { Connection } from './connection'
-import { routing } from './app.routing'
+import { RoleService } from './role.service';
+import { Connection } from './connection';
+import { routing } from './app.routing';
 
 @NgModule({
   imports:      [ BrowserModule, routing, FormsModule, ChartsModule ],
   declarations: [ AppComponent, MainComponent, NewComponent, EditComponent, ChartComponent ],
   bootstrap: [AppComponent],
-  providers: [Connection]
+  providers: [Connection, RoleService]
 })
 export class AppModule { }
 

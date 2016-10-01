@@ -10,6 +10,9 @@ import { UserData, UserDocument, ResultSet, BarData } from './user'
 export class ChartComponent implements OnInit {
 
   barDatasets = [{label: "# of Votes", data: []}]
+
+  totalSalary = 0;
+  totalEmp = 0;
   
   barLabels = [];
 
@@ -50,13 +53,14 @@ export class ChartComponent implements OnInit {
         // this.users = []
         let chartData: number[] = []
         let chartLabel: string[] = []
-
+        this.totalEmp = total;
         documents.forEach(v => {
           // this.barDatasets.data.push(+v.doc.salary)
           // console.log(v.doc)
           this.pieChartLabels.push(v.doc.fullname)
           chartLabel.push(v.doc.fullname)
           chartData.push(+v.doc.salary)
+          this.totalSalary += +v.doc.salary;
           // this.barDatasets[0].data.push(+v.doc.salary)
         });
         this.barDatasets[0].data = chartData
